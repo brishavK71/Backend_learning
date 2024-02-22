@@ -6,7 +6,19 @@ dotenv.config({
   path: "./env",
 });
 
-connectDB();
+connectDB()
+  .then(() => {
+    app.on("ERROR", (error) => {
+      console.log("ERROR:", error);
+      throw error;
+    });
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`server is running at port : ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MONGO DB connection error");
+  });
 
 // DB CONNECTION IN THE INDEX.JS FILE WITHOUR USING FILE STRUCTURE METHOD
 
