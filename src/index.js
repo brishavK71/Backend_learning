@@ -8,6 +8,8 @@ dotenv.config({
 
 connectDB();
 
+// DB CONNECTION IN THE INDEX.JS FILE WITHOUR USING FILE STRUCTURE METHOD
+
 // import mongoose from "mongoose";
 // import { DB_NAME } from "./constants";
 
