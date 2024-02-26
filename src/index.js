@@ -1,23 +1,21 @@
 // require("dotenv").config({ path: "./env" });
 import connectDB from "./db/dbconnect.js";
 import dotenv from "dotenv";
+import { app } from "./app.js";
 
 dotenv.config({
   path: "./env",
 });
 
+// app wasn't import so app.listen failed to execute to throw an error
 connectDB()
   .then(() => {
-    app.on("ERROR", (error) => {
-      console.log("ERROR:", error);
-      throw error;
-    });
     app.listen(process.env.PORT || 8000, () => {
       console.log(`server is running at port : ${process.env.PORT}`);
     });
   })
   .catch((err) => {
-    console.log("MONGO DB connection error");
+    console.log("MONGO DB connection failed!!!");
   });
 
 // DB CONNECTION IN THE INDEX.JS FILE WITHOUR USING FILE STRUCTURE METHOD
