@@ -7,7 +7,7 @@ dotenv.config({
   path: "./env",
 });
 
-// app wasn't import so app.listen failed to execute to throw an error
+// app wasn't imported so app.listen() failed to execute so it threw an error
 connectDB()
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
