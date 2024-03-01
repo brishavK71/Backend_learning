@@ -25,12 +25,13 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 
 // COOKIE CONFIGURATION
-
-app.use(cookieParser);
+app.use(cookieParser());
+// cookieParser middleware, but it's missing parentheses () for invocation. It should be app.use(cookieParser()); this was the reason app.js was not loading
 
 //routes import
 import userRouter from "./routes/user.routes.js";
 
 //routes declaration
-app.use("/users", userRouter);
+app.use("/api/v1/users", userRouter);
+
 export { app };
