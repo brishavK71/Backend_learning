@@ -23,7 +23,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   //CHECK IF USER ALREADY EXISTS
 
-  const existedUser = User.findOne({
+  const existedUser = await User.findOne({
     $or: [{ username }, { email }],
   });
 
@@ -56,7 +56,7 @@ const registerUser = asyncHandler(async (req, res) => {
     coverImage: coverImage?.url || "",
     email,
     password,
-    username: username.toLowercase(),
+    username: username?.toLowerCase(),
   });
 
   //VALIDATING USER CREATION AND REMOVING "password" and "refreshToken" field from reponse

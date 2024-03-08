@@ -4,10 +4,6 @@ import bcryptjs from "bcryptjs";
 
 const userSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     username: {
       type: String,
       requrired: true,
