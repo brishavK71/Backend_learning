@@ -44,7 +44,7 @@ const userSchema = new Schema(
       type: String,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 //this code runs everytime the file is executed and password is changed everytime so for that we define a logic below which determines whether the password field is modified or not and if modified only then run the code again.
@@ -65,27 +65,27 @@ userSchema.methods.generateAccessToken = function () {
       _id: this._id,
       email: this.email,
       username: this.username,
-      fullname: this.fullName,
+      fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
       expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
-    },
+    }
   );
 };
 
-userSchema.methods.generateRefreshAToken = function () {
+userSchema.methods.generateRefreshToken = function () {
   jwt.sign(
     {
       _id: this._id,
       email: this.email,
       username: this.username,
-      fullname: this.fullName,
+      fullName: this.fullName,
     },
     process.env.REFRESH_TOKEN_SECRET,
     {
       expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
-    },
+    }
   );
 };
 
