@@ -9,11 +9,8 @@ const generateAccessandRefreshToken = async (userId) => {
     const user = await User.findById(userId);
     const accessToken = user.generateAccessToken();
     const refreshToken = user.generateRefreshToken();
-
     //ADDING VALUES INSIDE AN OBJECT IN DATABASE
-
     user.refreshToken = refreshToken;
-
     //SAVING refreshtoken in DB
 
     await user.save({ validateBeforeSave: false });
@@ -108,7 +105,7 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
 
-  if (!username || !email) {
+  if (!(username || email)) {
     throw new ApiError(400, "Email or username is required");
   }
 
@@ -143,7 +140,7 @@ const loginUser = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .cookie("accessToken", accessToken, options)
-    .cookie("refreshToken", refreshToken.options)
+    .cookie("refreshToken", refreshToken, options)
     .json(
       new ApiResponse(
         200,
