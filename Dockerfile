@@ -1,5 +1,4 @@
-FROM node:latest
-
+FROM node:18
 # Set the working directory
 WORKDIR /app
 
@@ -11,8 +10,6 @@ RUN npm install
 
 # Copy the rest of the application files
 COPY . .
-
-EXPOSE 8000
 
 # Specify the command to run the application
 CMD ["npm", "start"]
