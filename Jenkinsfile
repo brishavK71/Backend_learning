@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git branch: 'main', url: 'https://github.com/brishavK71/dockerizeandpushpipeline.git'
+                git branch: 'main', url: 'https://github.com/brishavK71/Backend_learning.git'
             }
         }
 
