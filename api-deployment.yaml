@@ -2,8 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-deployment
+  namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: api
@@ -13,7 +14,12 @@ spec:
         app: api
     spec:
       containers:
-        - name: api-container
-          image: brishavk71/nodeapitest:latest
-          ports:
-            - containerPort: 8000
+      - name: api-container
+        image: brishavk71/nodeapitest:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGODB_URI
+          value: "mongodb+srv://brishav:brishav123@backendcluster.ianuigp.mongodb.net/<dbname>?retryWrites=true&w=majority"
+        - name: PORT
+          value: "3000"
