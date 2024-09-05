@@ -20,6 +20,6 @@ spec:
         - containerPort: 3000
         env:
         - name: MONGODB_URI
-          value: "mongodb+srv://brishav:brishav123@backendcluster.ianuigp.mongodb.net/<dbname>?retryWrites=true&w=majority"
+          value: 
         - name: PORT
           value: "3000"
